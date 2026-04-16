@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sport_class_id')->constrained()->onDelete('cascade');
             $table->foreignId('member_id')->constrained()->onDelete('cascade');
             $table->foreignId('subscription_id')->nullable()->constrained()->onDelete('set null');
             $table->date('date');
@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->foreignId('marked_by')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
 
-            $table->unique(['class_id', 'member_id', 'date']);
+            $table->unique(['sport_class_id', 'member_id', 'date']);
         });
     }
 
